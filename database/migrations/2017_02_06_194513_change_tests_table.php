@@ -14,7 +14,9 @@ class ChangeTestsTable extends Migration
     public function up()
     {
         Schema::table('tests', function ($table) {
-            $table->boolean('shuffle_questions')->nullable()->default(false)->after('archive');
+            $table->integer('count_questions')->nullable()->after('archive');
+            $table->integer('count_answers')->nullable()->after('archive');
+            $table->boolean('shuffle_answers')->nullable()->default(false)->after('shuffle_questions');
             $table->boolean('shuffle_answers')->nullable()->default(false)->after('shuffle_questions');
             $table->boolean('view_right_answers')->nullable()->default(true)->after('shuffle_answers');
             $table->boolean('view_more_1_answer')->nullable()->default(false)->after('view_right_answers');
@@ -32,6 +34,8 @@ class ChangeTestsTable extends Migration
     public function down()
     {
         Schema::table('tests', function ($table) {
+            $table->dropColumn('count_questions');
+            $table->dropColumn('count_answers');
             $table->dropColumn('shuffle_questions');
             $table->dropColumn('shuffle_answers');
             $table->dropColumn('view_right_answers');
