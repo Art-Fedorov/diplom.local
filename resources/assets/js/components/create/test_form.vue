@@ -243,7 +243,7 @@ export default ({
           }, function(response) {
             // $('.error').append($.parseHTML(response.body));
             // console.log(response.body);
-              console.log(response.data);
+              console.log(response);
           });
         }
         else {     
@@ -251,7 +251,7 @@ export default ({
               this.test=response.data.data;
 
               this.edited=true;
-              
+              //console.log(response.data.data);
               this.$parent.showPopupDelay(2000);
               this.$parent.popup.header="Тест успешно создан";
 
