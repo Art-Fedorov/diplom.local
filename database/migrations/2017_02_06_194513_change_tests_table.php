@@ -14,9 +14,11 @@ class ChangeTestsTable extends Migration
     public function up()
     {
         Schema::table('tests', function ($table) {
-            $table->boolean('shuffle_questions')->nullable()->default(false)->after('archive');
-            $table->boolean('shuffle_answers')->nullable()->default(false)->after('shuffle_questions');
-            $table->boolean('view_right_answers')->nullable()->default(true)->after('shuffle_answers');
+            $table->integer('count_questions')->nullable()->after('archive');
+            $table->integer('count_answers')->nullable()->after('archive');
+            $table->boolean('shuffle_answers')->nullable()->default(false)->after('count_answers');
+            $table->boolean('shuffle_questions')->nullable()->default(false)->after('shuffle_answers');
+            $table->boolean('view_right_answers')->nullable()->default(true)->after('shuffle_questions');
             $table->boolean('view_more_1_answer')->nullable()->default(false)->after('view_right_answers');
             $table->boolean('pass_other_questions')->nullable()->default(true)->after('view_more_1_answer');
             $table->string('time')->nullable()->default("00:30:00")->after('pass_other_questions');
@@ -32,6 +34,8 @@ class ChangeTestsTable extends Migration
     public function down()
     {
         Schema::table('tests', function ($table) {
+            $table->dropColumn('count_questions');
+            $table->dropColumn('count_answers');
             $table->dropColumn('shuffle_questions');
             $table->dropColumn('shuffle_answers');
             $table->dropColumn('view_right_answers');
