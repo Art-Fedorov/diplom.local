@@ -65,10 +65,10 @@ class TestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,Test $testModel)
-    { 
-        $data=$request->all();
+    {
+        $data=Input::except(['id']);
         $test=new Test();
-        $test->fill($data)->save();
+        $testModel->insert($data);
         $data=$testModel->getLastTest();
         return response()->json(['data'=>$data]) ;
     }
