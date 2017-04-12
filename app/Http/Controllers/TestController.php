@@ -28,7 +28,7 @@ class TestController extends Controller
             return response()->json(['tests'=>$tests]);
         }
         //dump($data);
-        return response()->json(['tests'=>$tests,'req'=>Auth::id()]);
+        //return response()->json(['tests'=>$tests,'req'=>Auth::id()]);
     }
     public function tests(Test $testModel)
     {

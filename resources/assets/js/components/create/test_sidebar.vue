@@ -80,19 +80,19 @@ export default({
                       if (prop=="questions"||prop=="showed"||prop=="expand") continue;
                       this.publishedTests[key][prop]=receive[keyRec][prop];
                     }
-                    for (var keyRecQ in receive[keyRec].questions){
-                      //console.log($.parseHTML(receive[keyRec].questions[keyRecQ].question));
-                      var oldQuestion=false;
-                      for (var keyQ in this.publishedTests[key].questions){
-                        if (this.publishedTests[key].questions[keyQ].id == receive[keyRec].questions[keyRecQ].id){
-                          this.publishedTests[key].questions[keyQ]=receive[keyRec].questions[keyRecQ];
-                          oldQuestion=true;
-                        }
-                      }
-                      if (!oldQuestion){
-                        this.publishedTests[key].questions.push(receive[keyRec].questions[keyRecQ]);
-                      }
-                    }
+                    // for (var keyRecQ in receive[keyRec].questions){
+                    //   //console.log($.parseHTML(receive[keyRec].questions[keyRecQ].question));
+                    //   var oldQuestion=false;
+                    //   for (var keyQ in this.publishedTests[key].questions){
+                    //     if (this.publishedTests[key].questions[keyQ].id == receive[keyRec].questions[keyRecQ].id){
+                    //       this.publishedTests[key].questions[keyQ]=receive[keyRec].questions[keyRecQ];
+                    //       oldQuestion=true;
+                    //     }
+                    //   }
+                    //   if (!oldQuestion){
+                    //     this.publishedTests[key].questions.push(receive[keyRec].questions[keyRecQ]);
+                    //   }
+                    // }
                   }
                 }
                 if (!oldTest){
@@ -114,19 +114,19 @@ export default({
                     }
 
                     //Вопросики
-                    for (var keyRecQ in receive[keyRec].questions){
-                      var oldQuestion=false;
+                    // for (var keyRecQ in receive[keyRec].questions){
+                    //   var oldQuestion=false;
 
-                      for (var keyQ in this.tests[key].questions){
-                        if (this.tests[key].questions[keyQ].id == receive[keyRec].questions[keyRecQ].id){
-                          this.tests[key].questions[keyQ]=receive[keyRec].questions[keyRecQ];
-                          oldQuestion=true;
-                        }
-                      }
-                      if (!oldQuestion){
-                        this.tests[key].questions.push(receive[keyRec].questions[keyRecQ]);
-                      }
-                    }
+                    //   for (var keyQ in this.tests[key].questions){
+                    //     if (this.tests[key].questions[keyQ].id == receive[keyRec].questions[keyRecQ].id){
+                    //       this.tests[key].questions[keyQ]=receive[keyRec].questions[keyRecQ];
+                    //       oldQuestion=true;
+                    //     }
+                    //   }
+                    //   if (!oldQuestion){
+                    //     this.tests[key].questions.push(receive[keyRec].questions[keyRecQ]);
+                    //   }
+                    // }
                   }
                 }
                 if (!oldTest){

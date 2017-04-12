@@ -236,7 +236,6 @@ export default ({
         if (this.edited){
           this.$http.put('/api/test/'+this.test.id, data).then(function(response) {
               this.test=response.data.data;
-              //console.log(response.data.data);
               this.$parent.showPopupDelay(1500);
               this.$parent.popup.header="Тест успешно обновлен";
               this.$parent.$refs.testSidebar.getTests();
