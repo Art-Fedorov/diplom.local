@@ -11,7 +11,7 @@
                     @if ($test['id_alg']==1)
                         <pass-id1
                                 @if (isset($idResult))
-                                    idResult="{{$idResult}}"
+                                    id-result="{{$idResult}}"
                                 @endif
                                 @if (isset($questionsAnswers))
                                 qa="{{json_encode($questionsAnswers)}}"
@@ -35,7 +35,7 @@
                     @elseif ($test['id_alg']==2)
                         <pass-id2
                             @if (isset($idResult))
-                                idResult="{{$idResult}}"
+                                id-result="{{$idResult}}"
                             @endif
                             {{--@if (isset($questionsAnswers))--}}
                                 {{--qa="{{json_encode($questionsAnswers)}}"--}}

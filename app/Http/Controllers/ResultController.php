@@ -94,7 +94,7 @@ class ResultController extends Controller
 
         //Добавляем тест в категорию тех, которые уже пройдены
         $test = $testModel->getTestById($idT)->toArray();
-        //$testModel->where('id',$id)->update(['archive'=>true]);
+        $testModel->where('id',$id)->update(['archive'=>true]);
         //переменная для удобства
         $questions = $test['questions'];
 

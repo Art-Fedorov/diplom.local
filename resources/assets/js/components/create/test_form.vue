@@ -31,7 +31,8 @@
       </div>
       <div class="form-group">
         <div class="col-md-4 col-sm-4 form-group__label">
-          Максимальная оценка
+          Максимальная оценка<br>
+          (от 1 до 100)
         </div>
         <div class="col-md-8 col-sm-8">
           <input class="form-control" type="number" min="1" max="100" id="maxmark"
@@ -106,7 +107,7 @@
         </div>
       </div>
       
-      <div class="form-group form-group--checkbox">
+      <!-- <div class="form-group form-group--checkbox">
         <label for="published" class="col-md-5 col-sm-6  form-group__label">
           Опубликовать?
         </label>
@@ -117,7 +118,7 @@
           </div>
           
         </div>
-      </div>
+      </div> -->
       <input type="hidden" v-bind:value="this.idUser" name="id_user">
       <input type="hidden" name="id" v-bind:value="this.test.id">
       

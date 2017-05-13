@@ -5,7 +5,7 @@
     <h3 class="pass__subheader text-left">Вопросы</h3>
     <div class="pass__questions">
       <div class="form-group form-group--question" :class="{active: question.active}" v-for="(question,i) in questions" @click.prevent="selectQuestion(question)">
-        <a class="form-group__label question-text" v-html="question.question"></a>
+        <div class="form-group__label question-text ql-container" v-html="question.question"></div>
         <div class="question-answers-container">
           <div class="question-answers" v-if="getAnswersByQuestionId(question.id).length>0">
             <a class="answer-label"  v-for="answer in getAnswersByQuestionId(question.id)" @click.prevent="extractAnswer(answer.id,i)">{{parseInt(answer.index)}}</a>          

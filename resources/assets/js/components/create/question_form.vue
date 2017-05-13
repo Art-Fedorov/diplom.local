@@ -1,6 +1,6 @@
 <template>
 
-  <div class="test-container-lg">
+  <div class="test-container-lg" >
     <div class="test-container-md">
       <div class="question__button question__previous" v-if="checkShowPrevButton()">
         <button class="btn btn-sm btn-primary fa fa-arrow-left" @click.prevent="showPrevious"></button>
@@ -22,18 +22,21 @@
             <vue-editor
               ref="editor"
               :editor-toolbar="customToolbar"
-              :editor-content="question.question"
-              :use-save-button="false" :button-text="button">
-            
+              :value="question.question"
+              v-model="question.question"
+              :use-save-button="false">
             </vue-editor>
           </div>
         </div>
+        <div class="preview ql-container" v-html="question.question">
+          
+        </div>
         <div class="form-group">
           <div class="col-md-3 col-sm-4 text-right form-group__label">
-            Вес вопроса:
+            Вес вопроса<br>(от 1 до 10)
           </div>
           <div class="col-md-9 col-sm-8">
-            <input class="form-control" type="number" min="0.1" max="10" step="0.1" name="weight" 
+            <input class="form-control" type="number" min="1" max="10" step="0.1" name="weight" 
             v-model="question.weight" required/>
           </div>
         </div>
@@ -165,14 +168,15 @@
     data: function(){
       return {
         question: {
-          id: this.array.id?this.array.id:null,
+          id: this.array.id||null,
           question: "",
           weight: 1,
           answers: [],
         },
         customToolbar: [
             ['bold', 'italic', 'underline', 'strike'],
-            ['blockquote', 'code-block','image'],
+            ['blockquote', 'code-block'],
+            ['image'],
 
             [{ 'list': 'ordered'}, { 'list': 'bullet' }],
 
@@ -230,13 +234,14 @@
 
     methods: {
       onArrayChange(val){
-        this.question={};
-        this.question.question="";
-        this.question.id= val.id?val.id:null;
-        this.question.testId= val.testId?val.testId:null;
-        this.getTest();
-        this.getSingleQuestion();
-        this.checkInscription();
+        let that=this;
+        that.question={};
+        that.question.question=val.question?val.question:"";
+        that.question.id= val.id||null;
+        that.question.testId= val.testId||null;
+        that.getTest();
+        that.getSingleQuestion();
+        that.checkInscription();
       },
 
       getTest(){
@@ -246,14 +251,14 @@
             //console.log(response.data);
           }, function(response) {
               
-          });
+          }); 
       },
       addNext(){
         this.$parent.switchMainView('question-form',
                 { testId: this.array.testId,
-                  title: 'add' });
+                  title: 'add', question: "" });
         this.onArrayChange({ testId: this.array.testId,
-                  title: 'add' });
+                  title: 'add', question: "" });
       },
       checkShowPrevButton(){
         for (var key in this.test.questions){
@@ -316,19 +321,20 @@
       //get question data
       getSingleQuestion: function(){
         if (this.question.id){
+          var that=this;
           this.route = '/api/question/'+this.question.id+'/edit';
           this.$http.get(this.route).then(function(response){
-            this.question=response.data.edited;
-            // for (var key in this.question.answers){
-            //   this.question.answers[key].message=null;
-            // }
-            this.$nextTick(function(){
-              this.checkAlgorythm();
+
+            
+            
+            that.$nextTick(function(){
+              that.question=response.data.edited;
+              that.checkAlgorythm();
             });
           },function(error){
             console.log(error);
           });
-          this.edited=true;
+          that.edited=true;
         } else{
           this.question.question="";
           this.edited=false;
@@ -338,40 +344,42 @@
 
       //update or create question
       setupQuestion: function(){
+        let that=this;
         let data= getFormData($('#question-form'));
-        let x = this.$refs.editor.editor.innerHTML.replace(/<\/?[^>]+>/g,'').replace(/\s+/,"");
+        let x = that.$refs.editor.editor.innerHTML.replace(/<\/?[^>]+>/g,'').replace(/\s+/,"");
         if (x.length<=5){
           alert('Введите вопрос длинною более 5 символов!');
           return false;
         }
-        this.question.question=this.$refs.editor.editor.innerHTML;
-        data.question=this.question.question;
-        if (this.edited){
-          this.$http.put('/api/question/'+this.question.id, data).then(function(response) {
+
+        that.question.question=that.$refs.editor.editor.innerHTML;
+        data.question=that.question.question;
+        if (that.edited){
+          that.$http.put('/api/question/'+that.question.id, data).then(function(response) {
 
 
-            this.$parent.showPopupDelay(1500);
-            this.$parent.popup.header="Вопрос успешно изменен";
+            that.$parent.showPopupDelay(1500);
+            that.$parent.popup.header="Вопрос успешно изменен";
 
-            this.$parent.$refs.testSidebar.getTests();
+            that.$parent.$refs.testSidebar.getTests();
           }, function() {
               console.log('failed');
           });
         }
         else {
           
-          this.$http.post('/api/question', data).then(function(response) {
+          that.$http.post('/api/question', data).then(function(response) {
 
-            this.$parent.showPopupDelay(1500);
-            this.$parent.popup.header="Вопрос успешно добавлен";
+            that.$parent.showPopupDelay(1500);
+            that.$parent.popup.header="Вопрос успешно добавлен";
 
-            this.edited=true;
-            this.headerMessage='Изменение вопроса';
-            this.button='Изменить вопрос';
-            this.question=response.data.data;
-            this.$parent.$refs.testSidebar.getTests();
+            that.edited=true;
+            that.headerMessage='Изменение вопроса';
+            that.button='Изменить вопрос';
+            that.question=response.data.data;
+            that.$parent.$refs.testSidebar.getTests();
           }, function(response) {
-              console.log(response.data);
+              //console.log(response.data);
           });
         }
         
@@ -380,7 +388,7 @@
       createAnswer(){
         let form='#answer-form ';
         let data= getFormData($(form));
-        console.log(data);
+        //console.log(data);
         this.$http.post('/api/answer', data).then(function(response) {
             this.question.answers.push(response.data.data);
             this.$parent.showPopupDelay(1200);
@@ -402,7 +410,7 @@
       editAnswer(index){
         let form='#answer-form'+index+' ';
         let data= getFormData($(form));
-        console.log(data);
+        //console.log(data);
         this.$http.put('/api/answer/'+data.id, data).then(function(response) {
               this.$parent.showPopupDelay(1200);
               this.$parent.popup.header="Ответ успешно изменен";

@@ -1431,7 +1431,6 @@ img {
   background-color: #f5f8fa;
   border: 1px solid #ddd;
   border-radius: 4px;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;
   max-width: 100%;
@@ -3032,7 +3031,6 @@ output {
   border: 1px solid #ccd0d2;
   border-radius: 4px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
@@ -4024,7 +4022,6 @@ input[type="button"].btn-block {
 
 .fade {
   opacity: 0;
-  -webkit-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
 
@@ -4052,11 +4049,8 @@ tbody.collapse.in {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition-property: height, visibility;
   transition-property: height, visibility;
-  -webkit-transition-duration: 0.35s;
   transition-duration: 0.35s;
-  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
 }
 
@@ -5718,7 +5712,6 @@ a.badge:hover, a.badge:focus {
   background-color: #f5f8fa;
   border: 1px solid #ddd;
   border-radius: 4px;
-  -webkit-transition: border 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
 }
 
@@ -5873,13 +5866,11 @@ a.thumbnail.active {
   text-align: center;
   background-color: #3097D1;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-transition: width 0.6s ease;
   transition: width 0.6s ease;
 }
 
 .progress-striped .progress-bar,
 .progress-bar-striped {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-size: 40px 40px;
 }
@@ -5895,7 +5886,6 @@ a.thumbnail.active {
 }
 
 .progress-striped .progress-bar-success {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -5904,7 +5894,6 @@ a.thumbnail.active {
 }
 
 .progress-striped .progress-bar-info {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -5913,7 +5902,6 @@ a.thumbnail.active {
 }
 
 .progress-striped .progress-bar-warning {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -5922,7 +5910,6 @@ a.thumbnail.active {
 }
 
 .progress-striped .progress-bar-danger {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
@@ -6726,7 +6713,6 @@ button.close {
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
   transform: translate(0, -25%);
-  -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
   transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
@@ -7152,7 +7138,6 @@ button.close {
 .carousel-inner > .item {
   display: none;
   position: relative;
-  -webkit-transition: 0.6s ease-in-out left;
   transition: 0.6s ease-in-out left;
 }
 
@@ -7166,7 +7151,6 @@ button.close {
 
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
-    -webkit-transition: -webkit-transform 0.6s ease-in-out;
     transition: -webkit-transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
@@ -7246,7 +7230,6 @@ button.close {
 }
 
 .carousel-control.left {
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
@@ -7255,7 +7238,6 @@ button.close {
 .carousel-control.right {
   left: auto;
   right: 0;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
@@ -10827,7 +10809,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .btn {
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
 }
 
@@ -10935,7 +10916,6 @@ p {
 
 .radio-container .label-style:after {
   content: '';
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   position: absolute;
   display: block;
@@ -11206,7 +11186,6 @@ p {
 }
 
 .sidebar__list-item-header {
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   margin-right: 7px;
   font-size: 18px;
@@ -11219,7 +11198,6 @@ p {
 }
 
 .sidebar__question {
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   color: #006064;
   text-align: left;
@@ -11321,7 +11299,6 @@ p {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
     z-index: 1500;
-    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     padding: 0;
     margin: 0;
@@ -11528,7 +11505,6 @@ p {
   max-width: 100%;
   width: 300px;
   margin-top: 0px;
-  -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
   background-color: #eee;
   border-radius: 10px;
@@ -11549,7 +11525,6 @@ p {
   background-color: #fff;
   color: #222;
   text-align: center;
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   padding-left: 3px;
   padding-right: 3px;
@@ -11581,7 +11556,6 @@ p {
 .answer-label {
   background-color: #009688;
   color: white;
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   padding-left: 5px;
   padding-right: 5px;
@@ -11664,7 +11638,6 @@ p {
 .answer-text {
   padding: 2px 5px;
   border-radius: 3px;
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -11718,7 +11691,6 @@ p {
 
 /*Animations*/
 .slide-fade-enter-active {
-  -webkit-transition: all .3s;
   transition: all .3s;
 }
 
@@ -11729,7 +11701,6 @@ p {
 }
 
 .slide-fade-leave-active {
-  -webkit-transition: all .3s;
   transition: all .3s;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
@@ -11737,7 +11708,6 @@ p {
 }
 
 .fade-enter-active, .fast-fade-active {
-  -webkit-transition: all .3s;
   transition: all .3s;
 }
 
@@ -11746,19 +11716,16 @@ p {
 }
 
 .fade-leave-active {
-  -webkit-transition: all .3s;
   transition: all .3s;
   opacity: 0;
 }
 
 .fast-fade-leave-active {
-  -webkit-transition: all .2s;
   transition: all .2s;
   opacity: 0;
 }
 
 .modal-enter-active {
-  -webkit-transition: all .3s;
   transition: all .3s;
 }
 
@@ -11768,7 +11735,6 @@ p {
 
 .modal-leave-active {
   opacity: 0;
-  -webkit-transition: all .3s;
   transition: all .3s;
 }
 
@@ -11779,7 +11745,6 @@ p {
 }
 
 .list-row-item {
-  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -12070,7 +12035,6 @@ p {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  -webkit-transition: opacity .2s ease;
   transition: opacity .2s ease;
 }
 
@@ -12082,7 +12046,6 @@ p {
   padding-top: 7px;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -12244,7 +12207,6 @@ p {
 }
 
 .result__question {
-  -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   width: 22px;
   display: -moz-inline-flex;
@@ -12416,6 +12378,12 @@ footer {
 
 footer * {
   color: white;
+}
+
+/** quill-container **/
+.ql-container img {
+  max-width: 100%;
+  max-height: 300px !important;
 }
 
 /*# sourceMappingURL=app.css.map */

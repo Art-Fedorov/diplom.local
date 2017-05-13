@@ -44,7 +44,8 @@
 
                     <button v-if="showSidebar" class="sidebar-button btn btn-primary">Показать сайдбар</button>
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{--{{ config('app.name', 'Laravel') }}--}}
+                        Опрос студентов
                     </a>
                 </div>
 

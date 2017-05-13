@@ -11,6 +11,7 @@ var groups = require('./components/create/groups.vue');
 var users = require('./components/create/users.vue');
 var popup = require('./components/popup.vue');
 
+import { VueEditor } from 'vue2-editor';
 
 var testInstance = new Vue({
     el: '#app',
@@ -28,6 +29,21 @@ var testInstance = new Vue({
         header: null,
         body: null
       },
+      xxx: 0,
+      testContent: '<p>asd</p>',
+      customToolbar: [
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote', 'code-block','image'],
+
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'font': [] }],
+
+            ['clean']
+          ],
 
     },
     created: function(){
@@ -44,6 +60,7 @@ var testInstance = new Vue({
       'groups': groups,
       'users': users,
       'popup': popup,
+      'vue-editor': VueEditor
     },
     watch: {
       current(val){
@@ -51,6 +68,10 @@ var testInstance = new Vue({
       }
     },
     methods: {
+      showTestContent(){
+        this.xxx++;
+        console.log(this.xxx,this.testContent);
+      },
       showPopupDelay(ms){
         let self=this;
         self.showPopup=true;

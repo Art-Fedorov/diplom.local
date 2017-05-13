@@ -20,7 +20,8 @@
     </div>
     <div class="result__current-item">
       <div class="result__current-item-question h4">
-        {{index(currentIndex)}}. <span v-html="questionsAnswers[currentIndex].question.question"></span>
+        {{index(currentIndex)}}. 
+        <div class="ql-container" v-html="questionsAnswers[currentIndex].question.question"></div>
       </div>
       <div class="result__answers">
         <div class="result__answer" 

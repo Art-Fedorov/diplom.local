@@ -30,16 +30,16 @@
         <span v-if="test.shuffle_answers">Да</span>
         <span v-else>Нет</span>
       </div>
-      <div class="publish__item">
+      <div class="publish__item" v-if="test.id_alg==1">
         Позволить произвольное перемещение по вопросам:
-        <span v-if="test.id_alg==1">
+        <span >
           <span v-if="test.pass_other_questions">Да</span>
           <span v-else>Нет</span>
         </span>
       </div>
-      <div class="publish__item">
+      <div class="publish__item" v-if="test.id_alg==1">
         Показывать, если правильных вариантов ответа больше одного:
-        <span v-if="test.id_alg==1">
+        <span >
           <span v-if="test.view_more_1_answer">Да</span>
           <span v-else>Нет</span>
         </span>

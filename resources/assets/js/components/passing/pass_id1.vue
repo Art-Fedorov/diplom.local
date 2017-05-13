@@ -7,7 +7,7 @@
           <h2 class="pass__header text-left ">{{tests.name}}</h2>
           <h3 class="pass__questions">
             <div class="pass__question-number">{{currentQuestionNumber+1<10?'0'+(currentQuestionNumber+1):(currentQuestionNumber+1)}}.</div>
-            <span class="pass__question-content" v-html="currentQuestion.question"></span>
+            <div class="pass__question-content ql-container" v-html="currentQuestion.question"></div>
           </h3>
           <div v-if="currentQuestion.word==0">
             <h4 class="pass__header pass__header--sm">Варианты ответов: <span v-if="tests.view_more_1_answer&&moreThanOneTrueAnswer(currentQuestion)">(несколько)</span></h4>

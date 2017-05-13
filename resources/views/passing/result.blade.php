@@ -31,9 +31,9 @@
                                 <p>
                                     Ваша оценка: <b>{{$result['mark']}}</b> <small>(Максимальная {{$test['maxmark']}})</small>
                                 </p>
-                                <p>
-                                    Процент правильных ответов: <b>{{$result['percent']}}%</b>
-                                </p>
+                                {{--<p>--}}
+                                    {{--Процент правильных ответов: <b>{{$result['percent']}}%</b>--}}
+                                {{--</p>--}}
 
                             </div>
                             {{--@foreach ($test['questions'] as $qK=>$question)--}}
@@ -58,9 +58,9 @@
                                 <p>Вопросы, на которые дан хотя бы 1 правильный ответ: <span class="answer-label">{{$result['atLeast1']}}</span></p>
                                 <p>Неправильных ответов: <span class="answer-label">{{$result['countFalse']}}</span></p>
                                 <br><br>
-                                <p>
-                                    Процент правильных ответов: <b>{{$res['percent']}}%</b>
-                                </p>
+                                {{--<p>--}}
+                                    {{--Процент правильных ответов: <b>{{$res['percent']}}%</b>--}}
+                                {{--</p>--}}
                                 <h3>Ваша оценка: <b>{{$res['mark']}}</b> <small><b>(из {{$test['maxmark']}})</b></small></h3>
 
                             </div>

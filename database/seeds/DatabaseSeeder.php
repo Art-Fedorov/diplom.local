@@ -14,18 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         //Model::unguard();
         // $this->call(UsersTableSeeder::class);
-        //$this->call('TestSeeder');
+        //$this->call('GroupsTableSeeder');
     }
 }
 
-class TestSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-    }
-}

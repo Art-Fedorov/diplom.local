@@ -1469,3 +1469,12 @@ footer{
     color: white;
   }
 }
+
+
+/** quill-container **/
+.ql-container{
+  img{
+    max-width: 100%;
+    max-height: 300px !important;
+  }
+}

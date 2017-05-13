@@ -5,6 +5,22 @@
 @section('content')
 
 <div class="main">
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <vue-editor
+                  ref="editor"
+                  :editor-toolbar="customToolbar"
+                  :editor-content="testContent"
+                  v-model="testContent"
+                  :use-save-button="false">
+                
+                </vue-editor>
+
+                <button @click.prevent="showTestContent()">kjk</button>
+            </div>
+        </div>
+    </div> -->
     <div class="container">
         <div class="row">
             
