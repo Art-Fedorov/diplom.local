@@ -25,8 +25,9 @@ use Carbon\Carbon;
 Route::get('/', function () {
     if (Auth::check()) {
         $user = new User();
-        $role = $user->getUserById(Auth::id())['role'];
-        return view('welcome',['role'=>$role]);
+        $userInfo=$user->getUserById(Auth::id());
+        $role = $userInfo['role'];
+        return view('welcome',['role'=>$role,'user'=>$userInfo]);
     }
     return view('welcome');
 
