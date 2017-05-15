@@ -8,6 +8,7 @@
       <div class="question__button question__next" v-if="checkShowNextButton()">
         <button class="btn btn-sm btn-primary fa fa-arrow-right"  @click.prevent="showNext"></button>
       </div>
+      <h2 class="mb10 text-center">Тест "{{test.name}}"</h2>
       <h2 class="text-center">{{headerMessage}}</h2>
       <form @submit.prevent="setupQuestion()" id="question-form">  
         <!-- <div class="form-group">

@@ -21,6 +21,7 @@
             </div>
         </div>
     </div> -->
+
     <div class="container">
         <div class="row">
             
@@ -50,24 +51,18 @@
                 <test-sidebar ref="testSidebar" id_user="{{Auth::id()}}">
                     
                 </test-sidebar>
-                
+
             </div>
             <div class="col-lg-8 col-md-8 js-main-content">
 
                 <div class="main-container">
                     {{-- @yield('contentTest') --}}
-                    <popup v-show="showPopup" @close="closePopup">
+
+                    <popup v-show="showPopup" @close.prevent="closePopup">
                         <h3 class="modal-header-text" v-if="popup.header" slot="header">@{{popup.header}}</h3>
                         <p v-if="popup.body" slot="body">@{{popup.body}}</p>
                     </popup>
-                    <transition name="fade">
-                        <button сlass="main__back btn btn-sm btn-primary"
-                                style="
-                                    margin-bottom: 15px;
-                                "
-                                v-show="previous.length"
-                        @click="switchPrevious()">Назад</button>
-                    </transition>
+                    <button class="btn btn-sm btn-primary main__back" v-show="previous.length" @click.prevent="switchPrevious()">Назад</button>
                     <transition name="fade" mode="out-in">
                         <component v-bind:is="current.mainView" :ref="current.mainView" :array="current.array" v-if="showed">
                         </component>

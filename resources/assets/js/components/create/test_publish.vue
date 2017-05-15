@@ -144,16 +144,21 @@
             <input type="text" class="datepicker form-control" id="published_at" name="published_at" v-model="dateEnd">
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group--top">
           <div class="col-md-4 col-sm-4  form-group__label">
             Назначаемые группы
           </div>
-          <div class="col-md-8 col-sm-8 publish__groups">
-            <span class="publish__group" v-for="(group,index) in selectedGroups" @click="extractGroup(group,index)">{{group.group}}</span>
-            <select v-model="selectedGroupId" name="id_group" class="form-control publish__groups-select">
-              <option v-for="group in groups" :value="group.id">{{group.group}}</option>
-            </select>
-            <button class="btn btn-primary" @click.prevent="selectGroup">ОК</button>
+          <div class="col-md-8 col-sm-8 text-left">
+            <div class="mb5">
+              <select v-model="selectedGroupId" name="id_group" class="form-control publish__groups-select">
+                <option v-for="group in groups" :value="group.id">{{group.group}}</option>
+              </select>
+              <button class="btn btn-primary" @click.prevent="selectGroup">ОК</button>
+            </div>
+            <div class="publish__groups">
+              <span class="publish__group" v-for="(group,index) in selectedGroups" @click="extractGroup(group,index)">{{group.group}}</span>
+            </div>
+            
           </div>
         </div>
 
@@ -305,8 +310,7 @@
         if (this.selectedGroups.length<1){ 
           alert('Выберите хотя бы 1 группу');
           return false;
-        }
-        
+        }   
         if (this.dateEnd!=null){
           if (!checkDate(this.dateEnd)){
             alert('Неверная дата окончания публикации');
@@ -314,7 +318,6 @@
           }
         }
         let date=this.dateStart;
-
         if (this.setDateStart==0){
           date=dateNow();
         }
@@ -382,9 +385,7 @@
         this.$http.get('/api/group').then(function(response) {
             this.b++;
             this.groups=response.data;
-            for (let group in this.groups){
-
-            }
+            this.selectedGroupId=this.groups[0].id||null;
           }, function(response) {
               
           });
@@ -394,7 +395,9 @@
           if (this.groups[group].id==this.selectedGroupId){
             this.selectedGroups.push(this.groups[group]);
             this.groups.splice(group,1);
-            //this.groups[group].selected=true;
+            if (this.groups[parseInt(group)]!==undefined){
+              this.selectedGroupId=this.groups[parseInt(group)].id||null;
+            }
             break;
           }
         }
@@ -407,6 +410,9 @@
         this.groups.push(group);
         this.groups.sort(sortById);
         this.selectedGroups.splice(index,1);
+        if (this.groups[parseInt(index)]!==undefined){
+          this.selectedGroupId=this.groups[0].id||null;
+        }
       }
     },
     computed:{

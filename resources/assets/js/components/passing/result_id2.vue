@@ -1,9 +1,9 @@
 <template>
   <div class="result">
-    <div class="result__header h3">
+    <div class="result__header h3 mb10">
       Ошибки в тесте:
     </div>
-    <div class="result__header h5">
+    <div class="result__header h5 mb5">
       Вопросы:
     </div>
     <div class="result__questions">
@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="result__current-item">
-      <div class="result__current-item-question h4">
-        {{index(currentIndex)}}. 
+      <div class="result__current-item-question h4 mb10">
+        <div class="result__number">{{index(currentIndex)}}. </div>
         <div class="ql-container" v-html="questionsAnswers[currentIndex].question.question"></div>
       </div>
       <div class="result__answers">

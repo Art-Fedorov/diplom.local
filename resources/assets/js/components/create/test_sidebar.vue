@@ -6,8 +6,8 @@
        class="btn-success fa fa-plus sidebar__add-test"></a>
     <div class="sidebar__filter-header">Фильтр</div>
     <div class="sidebar__filter">
-      <a class="btn btn-sm btn-primary sidebar__filter-button" :class="{'active': category==1}" @click.prevent="changeTestsCategory(1)">Стандартные тесты</a>
-      <a class="btn btn-sm btn-primary sidebar__filter-button" :class="{'active': category==2}" @click.prevent="changeTestsCategory(2)">Тесты Федорченко</a>
+      <a class="btn btn-sm btn-primary sidebar__filter-button" :class="{'active': category==1}" @click.prevent="changeTestsCategory(1)">Классические тесты</a>
+      <a class="btn btn-sm btn-primary sidebar__filter-button" :class="{'active': category==2}" @click.prevent="changeTestsCategory(2)">Тесты-сопоставления</a>
       <a class="btn btn-sm btn-primary sidebar__filter-button" :class="{'active': category==0}" @click.prevent="changeTestsCategory(0)">Все тесты</a>
     </div>
     <div class="sidebar__tests">
@@ -62,7 +62,7 @@ export default({
           for (var keyRec in receive)
           {
             this.b++;
-            receive[keyRec].expand=false;
+            //receive[keyRec].expand=false;
             receive[keyRec].showed=true;
             var oldTest=false;
 
@@ -109,7 +109,9 @@ export default({
                   if (this.tests[key].id == receive[keyRec].id&&this.tests[key].published == receive[keyRec].published){
                     oldTest=true;
                     for (var prop in this.tests[key]){
-                      if (prop=="questions"||prop=="showed"||prop=="expand") continue;
+                      if (prop=="questions"||prop=="showed"
+                        //||prop=="expand"
+                        ) continue;
                       this.tests[key][prop]=receive[keyRec][prop];
                     }
 

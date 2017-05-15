@@ -98,7 +98,6 @@
 
 					}
 					this.modResults[idT].groups[idG].results.push(this.results[key]);
-
 				}
 			},
 			onSearch(str){

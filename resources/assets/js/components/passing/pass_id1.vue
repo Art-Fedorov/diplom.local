@@ -193,14 +193,14 @@ export default({
     //Для стандартных тестов
     
     setAnswers(){
-      var self=this;
-      var idUser=self.$parent.$data.idUser;
-      var idTest=self.tests.id;
-      var idQuestion=self.currentQuestion.id;
+      let self=this;
+      let idUser=self.$parent.$data.idUser;
+      let idTest=self.tests.id;
+      let idQuestion=self.currentQuestion.id;
       self.tests.questions[self.currentQuestionNumber].passed=true;
       let data={};
       if($('#pass-question-form .pass-answer-item input:checked').length>0){
-        for (var k in self.tests.questions[self.currentQuestionNumber].answers){
+        for (let k in self.tests.questions[self.currentQuestionNumber].answers){
           self.tests.questions[self.currentQuestionNumber].answers[k].checked=false;
         }
         

@@ -110,6 +110,7 @@ class ResultController extends Controller
             $counter=-1;
             foreach($qa as $k=>$item){
                 $currentCounter=0;
+                //если вопрос типа слово/число
                 if ($item['answer']!=null){
                     $questionsAnswers[]=[
                         'id_question'=>  $item['id_question'],
@@ -118,6 +119,7 @@ class ResultController extends Controller
                     $counter++;
                     continue;
                 }
+                //если вопрос с вариантами ответов
                 if($currentQ!=$item['id_question']){
                     $currentQ=$item['id_question'];
                     $questionsAnswers[]=[
@@ -170,10 +172,8 @@ class ResultController extends Controller
                             $x = array_search($answer['id'], array_column($item['answers'], 'id_answer'));
                             if ($x===false) $flag=false;
                         }
-
                     }
                 }
-
                 if ($flag) $countRight++;
                 $questionsAnswers[$key]['iscorrect']=$flag?true:false;
             }
@@ -195,9 +195,6 @@ class ResultController extends Controller
                 //Находим индекс текущего вопроса в массиве ответов пользователей
                 $curQ=ResultController::getArrayIndex($questionsAnswers,'id_question',$question['id']);
                 //Проход по всем ответам внутри вопроса
-//                if ($question['word']) {
-//                    $userAnswer=
-//                }
                 foreach ($test['questions'][$key]['answers'] as $k => $answer) {
                     //Флаг для пометки требовалось поставить
                     $f=false;
@@ -256,8 +253,12 @@ class ResultController extends Controller
                 //вес одного правильного ответа в вопросе
                 $test['questions'][$key]['weightAnswer']=$question['weight']/$countRightAnswers;
             }
-            $countQuestions=count($questions);
-            $percent = round( $countRight / $countQuestions * 100 );
+
+            //кол-во правильных
+            //$percent = round( $countRight / $countQuestions * 100 );
+
+            //процент баллов
+            $percent = round($result['weight']/$result['allWeight']*100);
             $mark = round($result['weight']/$result['allWeight']*$test['maxmark']);
             $result ['percent'] = $percent;
             $result['mark'] = $mark;
@@ -276,8 +277,6 @@ class ResultController extends Controller
             foreach ($selectedQuestions as $key=>$item){
                 $allQuestions[]=$questionModel->getQuestionById($item['id_question']);
             }
-
-
             $selectedAnswers=$utaModel->getAByUserTest(Auth::id(),$id);
             //Взятие рандомных ответов согласно таблице userTestAnswers
             $allAnswers=[];
@@ -461,7 +460,7 @@ class ResultController extends Controller
             $result['mark']=round($M1+$Mtrue-$Mfalse);
             //добавление результатов
             $res=['id_test' => $data['id_test'], 'id_user' => Auth::id(),
-                'percent' => round($result['countRight']/$result['allCountRight']*100), 'mark' => $result['mark'],'passed'=>true];
+                'percent' => round($result['mark']/$test['maxmark']*100), 'mark' => $result['mark'],'passed'=>true];
             $resultModel->putResult($res,$idU,$idT);
             return view('passing.result',['test'=>$test,'questionsAnswers'=>$questionsAnswers,'result'=>$result,'res'=>$res]);
         }

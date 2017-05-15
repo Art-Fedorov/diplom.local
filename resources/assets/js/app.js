@@ -9,6 +9,7 @@ var testInfo = require('./components/create/test_info.vue');
 var results = require('./components/create/results.vue');
 var groups = require('./components/create/groups.vue');
 var users = require('./components/create/users.vue');
+var addGroups = require('./components/create/add_groups.vue');
 var popup = require('./components/popup.vue');
 
 import { VueEditor } from 'vue2-editor';
@@ -60,7 +61,8 @@ var testInstance = new Vue({
       'groups': groups,
       'users': users,
       'popup': popup,
-      'vue-editor': VueEditor
+      'vue-editor': VueEditor,
+      'add-groups': addGroups
     },
     watch: {
       current(val){

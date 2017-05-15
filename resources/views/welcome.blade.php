@@ -4,7 +4,13 @@
 
 @section('content')
 <div class="welcome">
-    <div class="welcome__header">Здравствуйте, {{$user['name']}}.<br>Добро пожаловать на главную страницу приложения тестирования студентов</div>
+
+    <div class="welcome__header">
+        @if (isset($user))
+            Здравствуйте, {{$user['name']}}.<br>
+        @endif
+        Добро пожаловать на главную страницу приложения тестирования студентов</div>
+
     <div class="welcome__support">
         @if (isset($role))
             @if ($role=='teacher')

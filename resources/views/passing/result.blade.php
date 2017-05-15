@@ -11,23 +11,26 @@
                         <h2 class="text-center result__header">Результаты прохождения теста</h2>
                         @if ($test['id_alg']==1)
                             <div class="container-md">
-                                @if ($result['right']==$result['all'])
-                                    <p>Вы ответили правильно на все вопросы!</p>
-                                @elseif ($result['right']==0)
-                                    <p>Вы не дали ни одного правильного ответа</p>
-                                @else
-                                    <p>Вы дали
-                                        <b>{{$result['right']}}</b>
-                                        @if ($result['right']%10==1)
-                                            правильный ответ
-                                        @elseif ($result['right']%10>1&&$result['right']%10<5)
-                                            правильных ответа
-                                        @elseif ($result['right']%10>=5||$result['right']%10==0)
-                                            правильных ответов
-                                        @endif
-                                        из
-                                        <b>{{count($test['questions'])}}</b></p>
-                                @endif
+                                {{--@if ($result['right']==$result['all'])--}}
+                                    {{--<p>Вы ответили правильно на все вопросы!</p>--}}
+                                {{--@elseif ($result['right']==0)--}}
+                                    {{--<p>Вы не дали ни одного правильного ответа</p>--}}
+                                {{--@else--}}
+                                    {{--<p>Вы дали--}}
+                                        {{--<b>{{$result['right']}}</b>--}}
+                                        {{--@if ($result['right']%10==1)--}}
+                                            {{--правильный ответ--}}
+                                        {{--@elseif ($result['right']%10>1&&$result['right']%10<5)--}}
+                                            {{--правильных ответа--}}
+                                        {{--@elseif ($result['right']%10>=5||$result['right']%10==0)--}}
+                                            {{--правильных ответов--}}
+                                        {{--@endif--}}
+                                        {{--из--}}
+                                        {{--<b>{{count($test['questions'])}}</b></p>--}}
+                                {{--@endif--}}
+                                <p>
+                                    Вы прошли тест на <b>{{$result['percent']}}%</b>
+                                </p>
                                 <p>
                                     Ваша оценка: <b>{{$result['mark']}}</b> <small>(Максимальная {{$test['maxmark']}})</small>
                                 </p>
@@ -54,13 +57,16 @@
 
                         @elseif ($test['id_alg']==2)
                             <div class="container-md">
-                                <p>Правильных ответов: <span class="answer-label">{{$result['countRight']}}</span></p>
-                                <p>Вопросы, на которые дан хотя бы 1 правильный ответ: <span class="answer-label">{{$result['atLeast1']}}</span></p>
-                                <p>Неправильных ответов: <span class="answer-label">{{$result['countFalse']}}</span></p>
-                                <br><br>
+                                {{--<p>Правильных ответов: <span class="answer-label">{{$result['countRight']}}</span></p>--}}
+                                {{--<p>Вопросы, на которые дан хотя бы 1 правильный ответ: <span class="answer-label">{{$result['atLeast1']}}</span></p>--}}
+                                {{--<p>Неправильных ответов: <span class="answer-label">{{$result['countFalse']}}</span></p>--}}
+                                {{--<br><br>--}}
                                 {{--<p>--}}
                                     {{--Процент правильных ответов: <b>{{$res['percent']}}%</b>--}}
                                 {{--</p>--}}
+                                <h3>
+                                    Вы прошли тест на <b>{{$res['percent']}}%</b>
+                                </h3>
                                 <h3>Ваша оценка: <b>{{$res['mark']}}</b> <small><b>(из {{$test['maxmark']}})</b></small></h3>
 
                             </div>

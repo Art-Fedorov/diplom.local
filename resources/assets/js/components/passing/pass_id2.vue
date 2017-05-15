@@ -1,11 +1,13 @@
 <template>
   <div class="question-text-container">
     <pass-timer :test="tests" :timer="timer"></pass-timer>
-    <h2 class="pass__header text-left ">{{tests.name}}</h2>
+    <h2 class="pass__header text-left ">Тест "{{tests.name}}"</h2>
     <h3 class="pass__subheader text-left">Вопросы</h3>
     <div class="pass__questions">
-      <div class="form-group form-group--question" :class="{active: question.active}" v-for="(question,i) in questions" @click.prevent="selectQuestion(question)">
-        <div class="form-group__label question-text ql-container" v-html="question.question"></div>
+      <div class="form-group mb15"  v-for="(question,i) in questions" @click.prevent="selectQuestion(question)">
+        <div class="form-group__label question-text ql-container form-group--question" :class="{active: question.active}" >
+          <div v-html="question.question"></div>
+        </div>
         <div class="question-answers-container">
           <div class="question-answers" v-if="getAnswersByQuestionId(question.id).length>0">
             <a class="answer-label"  v-for="answer in getAnswersByQuestionId(question.id)" @click.prevent="extractAnswer(answer.id,i)">{{parseInt(answer.index)}}</a>          
@@ -13,12 +15,10 @@
           <span class="question-answers" v-else>
             <span>ответов еще нет</span>
           </span>
-<!--           <transition name="fast-fade"> -->
-            <span v-show="question.active">
-              <input type="text" class="form-control form-control--sm" v-model="question.inputText" v-on:keyup.enter="setInput(question)" title="Введите сюда номер вопроса">
-              <button class="btn btn-primary btn-sm"  @click.prevent="setInput(question)" >ок</button>
-            </span>
-<!--           </transition> -->
+          <span v-show="question.active">
+            <input type="text" class="form-control form-control--sm" v-model="question.inputText" v-on:keyup.enter="setInput(question)" title="Введите сюда номер вопроса">
+            <button class="btn btn-primary btn-sm"  @click.prevent="setInput(question)" >ок</button>
+          </span>
           <transition name="fade">
             <span class="text-danger">
               {{question.errorMessage}}
@@ -59,10 +59,9 @@
       }
     },
     created(){
-      //console.log(this.tests,this.questions,this.answers,this.time);
-      this.modifyQuestions();
-      this.createQAObject();
       this.modifyAnswers();
+      this.createQAObject();
+      this.selectQuestion(this.questions[0]);
     },
     methods:{
 
@@ -71,9 +70,9 @@
           this.questions[key].active=false;
           this.questions[key].errorMessage="";
           this.questions[key].inputText="";
-          //console.log(this.questions[key]);
         }
         this.tests.questions[0].active=true;
+        
       },
       //выбор вопроса, на который будут даваться ответы
       selectQuestion(question){
@@ -85,6 +84,7 @@
           self.b++;
           self.selectedQuestion=questionId;
         }
+        console.log(question,self.selectedQuestion);
       },
       //выбор вариантов ответа на вопрос
       selectAnswer(answer,index){
@@ -179,12 +179,9 @@
         for (var key in this.questions){
           this.questionsAnswers.push({
             question: this.questions[key].id,
-            answers: new Array() 
+            answers: []
           });
         }
-        this.$nextTick(function(){
-
-        });
       },
       //вспомогательная функция для поиска нужного элемента
       //массива по id вопроса

@@ -7,7 +7,7 @@
       <h2>Тест "{{test.name}}"</h2>
     </div>
     <div class="publish__reminder text-left">
-      <div class="publish__item">
+      <div class="publish__item" v-if="test.desc">
         Описание теста: <span>{{test.desc}}</span>
       </div>
 
@@ -106,6 +106,9 @@
                           id: question.id, 
                           title: 'change' })">Добавить</a></div>
     </div>
+    <div v-else>
+      <h5>В этом тесте еще нет вопросов</h5>
+    </div>
     <div class="extra__buttons" v-show="test.id">
       <div v-if="!test.published" class="extra__button">
         <button  class="btn btn-sm btn-primary"
@@ -115,8 +118,6 @@
                 Добавить вопрос
         </button>
       </div>
-
-      
     </div>
     <div class="info__button">
         <button v-if="!test.published" v-show="!array.wasCreated" class="btn btn-success" 

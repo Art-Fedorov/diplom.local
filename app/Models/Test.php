@@ -56,14 +56,14 @@ class Test extends Model
         return $tests;
     }
     public function getAuthTests($id){
-        $tests=$this->with(['questions','questions.answers','algorithm'])->where('id_user',$id)->get();
+        $tests=$this->with(['questions','questions.answers','algorithm','test_groups'])->where('id_user',$id)->get();
         return $tests;
     }
     public function getLastTest(){
-        return $this->latest('id')->with(['questions','questions.answers','algorithm'])->first();
+        return $this->latest('id')->with(['questions','questions.answers','algorithm','test_groups'])->first();
     }
     public function getTestById($id)    {
-      return $this->with(['questions','answers','questions.answers','algorithm'])->find($id);
+      return $this->with(['questions','answers','questions.answers','algorithm','test_groups'])->find($id);
     }
     
     public function putTest($array,$id) {

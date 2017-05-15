@@ -5,6 +5,11 @@
       <div class="sidebar__list" v-if="tests.length>0">
         <div class="sidebar__list-item" v-for="(test,testIndex) in tests" v-show="test.showed"> 
           <a class="sidebar__list-item-header" @click.prevent="$parent.switchTestInfo(test)" title="Просмотреть подробную информацию о тесте">{{test.name}}</a>   
+          <i v-if="test.archive!=0||test.published!=0" class="sidebar__icon sidebar__icon--green fa fa-group" 
+            @click.prevent="$parent.$parent.switchMainView('add-groups',
+             { testId: test.id })" 
+            title="Изменение групп, для которых опубликован тест">
+          </i>
           <i v-if="test.archive==0&&test.published==0" class="sidebar__icon sidebar__icon--green fa fa-pencil" 
             
             @click.prevent="$parent.$parent.switchMainView('test-form',
