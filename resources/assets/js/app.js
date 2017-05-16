@@ -3,7 +3,7 @@
 var testForm = require('./components/create/test_form.vue');
 var questionForm = require('./components/create/question_form.vue');
 var testSidebar=  require('./components/create/test_sidebar.vue');
-var testView= require('./components/create/test_view.vue');
+//var testView= require('./components/create/test_view.vue');
 var testPublish= require('./components/create/test_publish.vue');
 var testInfo = require('./components/create/test_info.vue');
 var results = require('./components/create/results.vue');
@@ -22,6 +22,7 @@ var testInstance = new Vue({
         array: {title:'add'}
       },
       previous:[],
+      futurious: [],
       showed: true,
       idUser: null,
       showSidebar: true,
@@ -54,7 +55,7 @@ var testInstance = new Vue({
       'test-form': testForm,
       'question-form': questionForm,
       'test-sidebar': testSidebar,
-      'test-view': testView,
+      //'test-view': testView,
       'test-publish': testPublish,
       'test-info': testInfo,
       'results': results,
@@ -92,6 +93,7 @@ var testInstance = new Vue({
         if (this.current.mainView!=view||!isEqual(this.current.array,ar)){
           if (this.current.mainView!=view){
             this.previous.push(clone(this.current));
+            this.futurious=[];
           }
           this.current.mainView=view;
           if (Object.keys(ar).length>0){
@@ -100,7 +102,12 @@ var testInstance = new Vue({
         }
       },
       switchPrevious(){
+        this.futurious.push(clone(this.current));
         this.current=this.previous.pop();
+      },
+      switchFuturious(){
+        this.previous.push(clone(this.current));
+        this.current=this.futurious.pop();
       },
       getUserId(){
         this.$http.get('/api/user').then(function(response){

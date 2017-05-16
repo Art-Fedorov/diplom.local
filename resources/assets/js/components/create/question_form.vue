@@ -9,7 +9,7 @@
         <button class="btn btn-sm btn-primary fa fa-arrow-right"  @click.prevent="showNext"></button>
       </div>
       <h2 class="mb10 text-center">Тест "{{test.name}}"</h2>
-      <h2 class="text-center">{{headerMessage}}</h2>
+      <h3 class="text-center">{{headerMessage}}</h3>
       <form @submit.prevent="setupQuestion()" id="question-form">  
         <!-- <div class="form-group">
           <div class="col-md-12 col-sm-12 text-left">
@@ -29,9 +29,9 @@
             </vue-editor>
           </div>
         </div>
-        <div class="preview ql-container" v-html="question.question">
+        <!-- <div class="preview ql-container" v-html="question.question">
           
-        </div>
+        </div> -->
         <div class="form-group">
           <div class="col-md-3 col-sm-4 text-right form-group__label">
             Вес вопроса<br>(от 1 до 10)
@@ -68,7 +68,7 @@
     </div>
     <div class="test-container-md" v-show="edited">
       <div v-if="!question.word">
-        <h3>Варианты ответа</h3>
+        <h3 class="mb15">Варианты ответа</h3>
         <div class="answer">
         <div class="answer-item" v-for="(answer,index) in question.answers">
           <form :id="'answer-form'+index" :class="{'answer-form': test.id_alg!=2}" @submit.prevent="editAnswer(index)" >
@@ -79,14 +79,11 @@
               </div>
               <span v-show="false" v-else> <input type="hidden" name="iscorrect" value="1"></span>
               <input type="text" autocomplete="false" name="answer" id="answer" class="form-control question__form-control" v-model="answer.answer" required>
-              
-              
               <input type="hidden" :value="answer.id" name="id">
               <input type="hidden" :value="question.id_test" name="id_test">
               <button type="submit" class="btn btn-success">Обновить</button>
               <button class="question__icon fa fa-close" @click="deleteAnswer(answer.id)"></button>
             </div>
-            <span>{{ answer.message }}</span>
           </form>
         </div>
         <form id="answer-form" :class="{'answer-form': test.id_alg!=2}" @submit.prevent="createAnswer()">
@@ -100,10 +97,7 @@
             <input type="hidden" :value="question.id" name="id_question">
             <input type="hidden" :value="question.id_test" name="id_test">
             <button type="submit" class="btn btn-success">Сохранить</button>
-          </div>
-         
-          <!-- <span>{{ answerCreateMessage }}</span> -->
-          
+          </div>          
         </form>
         </div>
       </div>
@@ -117,10 +111,7 @@
             <input type="hidden" :value="question.id" name="id_question">
             <input type="hidden" :value="question.id_test" name="id_test">
             <button type="submit" class="btn btn-success">Сохранить</button>
-          </div>
-          
-          <!-- <span >{{ answerCreateMessage }}</span> -->
-          
+          </div>       
         </form>
 
         <form v-else id="answer-form" @submit.prevent="createAnswer()">

@@ -50,11 +50,15 @@
         <span v-else>Нет</span>
       </div>
       <div class="publish__item">
+        <button v-if="test.archive!=0||test.published!=0" class="btn btn-success publish__button publish__button--change" 
+        title="Изменить список групп, для которых опубликован тест"
+        @click.prevent="$parent.switchMainView('add-groups',
+             { testId: test.id })" >Изменить группы
+        </button>
         <button v-if="!test.published" class="btn btn-success publish__button publish__button--change" @click.prevent="$parent.switchMainView('test-form',
             { testId: test.id,
               id: test.id, 
-              title: 'Изменение теста', 
-              button: 'Изменить тест' })">Изменить данные теста
+              title: 'change' })">Изменить данные теста
         </button>
         <button v-if="!test.published" 
                 class="btn btn-success publish__button publish__button--change" 
@@ -74,8 +78,7 @@
     </div>
     <div class="info__question-container" v-for="(question,idx) in test.questions" v-if="test.questions.length">
       <h4 class="info__question-item" v-if="!test.published">
-        <a title="Удалить вопрос"
-                      class="info__delete-question question__icon fa fa-close btn-primary" @click.prevent="deleteQuestion(question,idx)"></a>
+        <a title="Удалить вопрос" class="info__delete-question question__icon fa fa-close btn-primary" @click.prevent="deleteQuestion(question,idx)"></a>
         <span class="info__question-number">{{parseInt(idx)+1}}</span>
         <span class="info__question" title="Изменить вопрос" @click.prevent="$parent.switchMainView('question-form',
                         { testId: test.id,
@@ -87,11 +90,6 @@
         <span class="info__question-number">{{parseInt(idx)+1}}</span>
         <span class="info__question" v-html="question.question"></span>
       </h5>
-      <!-- <a v-if="!test.published" class="list-row__icon btn-sm btn-primary" 
-        @click.prevent="$parent.switchMainView('question-form',
-                        { testId: test.id,
-                          id: question.id, 
-                          title: 'change' })">Изменить вопрос</a> -->
       
       <div class="info__answers" v-if="question.answers.length">
         <h5 class="info__answer-header">Ответы:</h5>

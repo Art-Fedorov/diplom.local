@@ -24,7 +24,7 @@
           Категория
         </div>
         <div class="col-md-8 col-sm-8">
-          <select class="form-control" name="id_alg" :disabled="test.id_alg" :title="test.id_alg?'После создания теста нельзя изменять его категорию':null">
+          <select class="form-control" name="id_alg" :disabled="test.id_alg" :title="test.id_alg?'После создания теста нельзя изменять его категорию':null" v-model="idAlgorithm">
             <option v-for="alg in algorithms" :value="alg.id" :selected="test.id_alg==alg.id?true:false">{{alg.name}}</option>
           </select>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-8 col-sm-8">
           <input class="form-control" type="number" min="1" max="100" id="maxmark"
-           v-bind:value="this.test.maxmark" name="maxmark" required />
+           v-bind:value="this.test.maxmark||'25'" name="maxmark" required />
         </div>
       </div>
       <div class="form-group">
@@ -44,7 +44,7 @@
           Время на прохождение в формате ЧЧ:ММ:СС
         </div>
         <div class="col-md-8 col-sm-8">
-          <input class="form-control" type="text" autocomplete="false" id="time" name="time" v-bind:value="this.test.time||'00:00:00'"/>
+          <input class="form-control" type="text" autocomplete="false" id="time" name="time" v-bind:value="this.test.time||'00:30:00'"/>
         </div>
       </div>
       <div class="form-group form-group--checkbox">
@@ -53,7 +53,7 @@
         </label>
         <div class="col-md-7 col-sm-6">
           <div class="checkbox-container">
-            <input type="checkbox" id="shuffle_questions" name="shuffle_questions" :checked="this.test.shuffle_questions">
+            <input type="checkbox" id="shuffle_questions" name="shuffle_questions" :checked="this.test.shuffle_questions||'true'">
             <label for="shuffle_questions" class="label-style"></label>
           </div>
           
@@ -66,12 +66,12 @@
         <div class="col-md-7 col-sm-6">
           
           <div class="checkbox-container">
-            <input type="checkbox" id="shuffle_answers" name="shuffle_answers" :checked="this.test.shuffle_answers">
+            <input type="checkbox" id="shuffle_answers" name="shuffle_answers" :checked="this.test.shuffle_answers||'true'">
             <label for="shuffle_answers" class="label-style"></label>
           </div>
         </div>
       </div>
-      <div class="form-group form-group--checkbox" v-show="test.id_alg==1">
+      <div class="form-group form-group--checkbox" v-show="idAlgorithm==1">
         <label for="view_more_1_answer" class="col-md-5 col-sm-6 form-group__label">
           Показывать, если правильных вариантов ответа больше одного
         </label>
@@ -83,7 +83,7 @@
           
         </div>
       </div>
-      <div class="form-group form-group--checkbox" v-show="test.id_alg==1">
+      <div class="form-group form-group--checkbox" v-show="idAlgorithm==1">
         <label for="pass_other_questions" class="col-md-5 col-sm-6 form-group__label">
           Позволить произвольное перемещение по вопросам
         </label>
@@ -160,7 +160,10 @@ export default ({
       headerMessage: 'Создание теста',
       button: 'Создать тест',
       message: null,
-      test: {},
+      idAlgorithm: 1,
+      test: {
+
+      },
       idUser: this.$parent.$data.idUser,
       edited: false,
       route: null

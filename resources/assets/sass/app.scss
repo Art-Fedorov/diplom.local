@@ -254,18 +254,28 @@ p{
   min-height: 500px;
   width: 100%;
 }
-.main__back{
-  border: none;
-  display: block;
-  margin-bottom: 15px;
-
-}
 @media all and(max-width: 991px){
   .main{
     margin-top: 61px;
   }
 }
 
+.switch-button-container{
+  position: relative;
+  height: 40px;
+  display: block;
+  width: 100%;
+}
+.switch-button-prev{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.switch-button-next{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
 //Цвета навбара
 $navbar-bg:  #009688;
@@ -1516,6 +1526,9 @@ footer{
 
 
 /** quill-container **/
+#quill-container{
+  height: 300px !important;
+}
 .ql-container{
   img{
     max-width: 100%;

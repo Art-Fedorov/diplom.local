@@ -8,7 +8,7 @@
           <i v-if="test.archive!=0||test.published!=0" class="sidebar__icon sidebar__icon--green fa fa-group" 
             @click.prevent="$parent.$parent.switchMainView('add-groups',
              { testId: test.id })" 
-            title="Изменение групп, для которых опубликован тест">
+            title="Изменить список групп, для которых опубликован тест">
           </i>
           <i v-if="test.archive==0&&test.published==0" class="sidebar__icon sidebar__icon--green fa fa-pencil" 
             

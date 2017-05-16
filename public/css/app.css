@@ -11056,16 +11056,29 @@ p {
   width: 100%;
 }
 
-.main__back {
-  border: none;
-  display: block;
-  margin-bottom: 15px;
-}
-
 @media all and (max-width: 991px) {
   .main {
     margin-top: 61px;
   }
+}
+
+.switch-button-container {
+  position: relative;
+  height: 40px;
+  display: block;
+  width: 100%;
+}
+
+.switch-button-prev {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.switch-button-next {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .navbar {
@@ -12435,6 +12448,10 @@ footer * {
 }
 
 /** quill-container **/
+#quill-container {
+  height: 300px !important;
+}
+
 .ql-container img {
   max-width: 100%;
   max-height: 300px !important;

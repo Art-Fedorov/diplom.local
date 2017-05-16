@@ -1,7 +1,6 @@
 <template>
   <div class="sidebar">
     <a title="Создать новый тест" @click.prevent="$parent.switchMainView('test-form',{
-              
               title: 'add' })" 
        class="btn-success fa fa-plus sidebar__add-test"></a>
     <div class="sidebar__filter-header">Фильтр</div>
@@ -13,7 +12,7 @@
     <div class="sidebar__tests">
       <sidebar-group nullMessage="Пока что нет созданных тестов" :tests="tests" :header="'Неопубликованные тесты'"></sidebar-group>
       <sidebar-group nullMessage="Пока что нет опубликованных тестов" :tests="publishedTests" :header="'Опубликованные тесты'"></sidebar-group>
-      <sidebar-group nullMessage="Пока что нет пройденных тестов" :tests="archiveTests" :header="'Пройденные тесты'"></sidebar-group>
+      <sidebar-group nullMessage="Пока что нет пройденных студентами тестов" :tests="archiveTests" :header="'Тесты, пройденные студентами'"></sidebar-group>
 
     </div>
     <div class="hide">{{b}}</div>
