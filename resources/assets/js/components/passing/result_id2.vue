@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="result__current-item">
-      <div class="result__current-item-question h4 mb10">
-        <div class="result__number">{{index(currentIndex)}}. </div>
+      <div class="result__current-item-question h4 mb20">
+        <div class="result__number">{{index(currentIndex)}}</div>
         <div class="ql-container" v-html="questionsAnswers[currentIndex].question.question"></div>
       </div>
       <div class="result__answers">

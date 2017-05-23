@@ -6,7 +6,7 @@
         <div class="pass-main col-lg-6 col-md-7 col-sm-7 col-xs-12">
           <h2 class="pass__header text-left ">{{tests.name}}</h2>
           <h3 class="pass__questions">
-            <div class="pass__question-number">{{currentQuestionNumber+1<10?'0'+(currentQuestionNumber+1):(currentQuestionNumber+1)}}.</div>
+            <div class="pass__question-number">{{currentQuestionNumber+1<10?'0'+(currentQuestionNumber+1):(currentQuestionNumber+1)}}</div>
             <div class="pass__question-content ql-container" v-html="currentQuestion.question"></div>
           </h3>
           <div v-if="currentQuestion.word==0">
@@ -59,7 +59,7 @@
               <button type="submit" class="btn  btn-success">
                 Ответить
               </button>    
-              <a class="btn-alternative" @click="incCurrentQuestionNumber">Пропустить</a>
+              <a class="btn-alternative" v-if="tests.pass_other_questions" @click="incCurrentQuestionNumber">Пропустить</a>
             </form>
           </div>
         </div>

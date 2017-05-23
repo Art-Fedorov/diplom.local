@@ -11259,6 +11259,18 @@ p {
   font-weight: 500;
 }
 
+.sidebar-button {
+  display: none;
+}
+
+@media all and (max-width: 991px) {
+  .sidebar-button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 8px;
+  }
+}
+
 .list-row {
   display: -moz-flex;
   display: -ms-flex;
@@ -11510,6 +11522,10 @@ p {
 
 .select__item-header {
   padding-bottom: 7px;
+  max-width: 100%;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .select__item-desc {
@@ -12048,6 +12064,7 @@ p {
 
 .publish__groups-select {
   width: 200px;
+  vertical-align: middle;
 }
 
 /** EXTRA BUTTONS **/
@@ -12070,9 +12087,10 @@ p {
   position: fixed;
   z-index: 9997;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  width: 500px;
+  height: auto;
+  max-height: 100%;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
@@ -12088,9 +12106,9 @@ p {
   position: fixed;
   z-index: 9998;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  width: 500px;
+  height: auto;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity .2s ease;
 }
@@ -12099,6 +12117,8 @@ p {
   z-index: 9999;
   width: 500px;
   max-width: 100%;
+  height: auto;
+  max-height: 100%;
   margin: 0px auto;
   padding-top: 7px;
   border-radius: 2px;
@@ -12317,6 +12337,11 @@ p {
 .result__question-number {
   float: left;
   margin-right: 5px;
+  background-color: #43A047;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 25px;
 }
 
 .result__current-item {
@@ -12328,7 +12353,6 @@ p {
   padding-left: 30px;
   color: #004D40;
   font-weight: 500;
-  padding-bottom: 8px;
   max-width: 800px;
 }
 

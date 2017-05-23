@@ -439,6 +439,19 @@ $navbar-bg:  #009688;
   h1,.h1,h2,.h2,h3,.h3,h4,.h4{
     font-weight: 500;
   }
+  &-button{
+    display: none;
+  }
+
+}
+@media all and (max-width: 991px){
+  .sidebar{
+    &-button{
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 8px;
+    }
+  }
 }
 
 
@@ -679,6 +692,10 @@ $navbar-bg:  #009688;
   }
   &__item-header{
     padding-bottom: 7px;
+    max-width: 100%;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &__item-desc{
     padding-bottom: 10px;
@@ -1166,6 +1183,7 @@ $navbar-bg:  #009688;
   }
   &__groups-select{
     width: 200px;
+    vertical-align: middle;
   }
 }
 
@@ -1191,9 +1209,10 @@ $navbar-bg:  #009688;
   position: fixed;
   z-index: 9997;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  width: 500px;
+  height: auto;
+  max-height: 100%;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -1207,9 +1226,9 @@ $navbar-bg:  #009688;
   position: fixed;
   z-index: 9998;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  width: 500px;
+  height: auto;
   background-color: rgba(0, 0, 0, .5);
   transition: opacity .2s ease;
 }
@@ -1220,6 +1239,8 @@ $navbar-bg:  #009688;
   z-index: 9999;
   width: 500px;
   max-width: 100%;
+  height: auto;
+  max-height: 100%;
   margin: 0px auto;
   padding-top: 7px;
   border-radius: 2px;
@@ -1411,6 +1432,11 @@ $navbar-bg:  #009688;
   &__question-number{
     float: left;
     margin-right: 5px;
+    background-color: $green;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 25px;
   }
   &__current-item{
     padding-bottom: 20px;
@@ -1420,7 +1446,6 @@ $navbar-bg:  #009688;
     padding-left: 30px;
     color: $dark-green;
     font-weight: 500;
-    padding-bottom: 8px;
     max-width: 800px;
   }
   &__answers{

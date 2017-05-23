@@ -1,14 +1,14 @@
 <template>
   <div>
     <form id="test-form" @submit.prevent="setupTest()">
-      <h2 class="text-center test__header">{{this.headerMessage}}</h2>
+      <h2 class="text-center test__header">{{headerMessage}}</h2>
       <div class="form-group">
         <div class="col-md-4 col-sm-4 form-group__label">
           Название теста
         </div>
         <div class="col-md-8 col-sm-8">
           <input class="form-control" type="text" autocomplete="false" name="name" 
-          v-bind:value="this.test.name" required/>
+          v-model="test.name" required/>
         </div>
       </div>
       <div class="form-group">
@@ -16,7 +16,7 @@
           Описание теста
         </div>
         <div class="col-md-8 col-sm-8">
-          <textarea class="form-control" id="desc" name="desc" type="text" autocomplete="false" rows="3" :value="this.test.desc" ></textarea>
+          <textarea class="form-control" id="desc" name="desc" type="text" autocomplete="false" rows="3" v-model="test.desc" ></textarea>
         </div>
       </div>
       <div class="form-group">
@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-8 col-sm-8">
           <input class="form-control" type="number" min="1" max="100" id="maxmark"
-           v-bind:value="this.test.maxmark||'25'" name="maxmark" required />
+           v-bind:value="test.maxmark||'25'" name="maxmark" required />
         </div>
       </div>
       <div class="form-group">
@@ -44,7 +44,7 @@
           Время на прохождение в формате ЧЧ:ММ:СС
         </div>
         <div class="col-md-8 col-sm-8">
-          <input class="form-control" type="text" autocomplete="false" id="time" name="time" v-bind:value="this.test.time||'00:30:00'"/>
+          <input class="form-control" type="text" autocomplete="false" id="time" name="time" v-bind:value="test.time||'00:30:00'"/>
         </div>
       </div>
       <div class="form-group form-group--checkbox">
@@ -53,7 +53,7 @@
         </label>
         <div class="col-md-7 col-sm-6">
           <div class="checkbox-container">
-            <input type="checkbox" id="shuffle_questions" name="shuffle_questions" :checked="this.test.shuffle_questions||'true'">
+            <input type="checkbox" id="shuffle_questions" name="shuffle_questions" :checked="test.shuffle_questions||'true'">
             <label for="shuffle_questions" class="label-style"></label>
           </div>
           
@@ -66,7 +66,7 @@
         <div class="col-md-7 col-sm-6">
           
           <div class="checkbox-container">
-            <input type="checkbox" id="shuffle_answers" name="shuffle_answers" :checked="this.test.shuffle_answers||'true'">
+            <input type="checkbox" id="shuffle_answers" name="shuffle_answers" :checked="test.shuffle_answers||'true'">
             <label for="shuffle_answers" class="label-style"></label>
           </div>
         </div>
@@ -77,7 +77,7 @@
         </label>
         <div class="col-md-7 col-sm-6">
           <div class="checkbox-container">
-            <input type="checkbox" id="view_more_1_answer" name="view_more_1_answer" :checked="this.test.view_more_1_answer">
+            <input type="checkbox" id="view_more_1_answer" name="view_more_1_answer" :checked="test.view_more_1_answer">
             <label for="view_more_1_answer" class="label-style"></label>
           </div>
           
@@ -89,7 +89,7 @@
         </label>
         <div class="col-md-7 col-sm-6">
           <div class="checkbox-container">
-            <input type="checkbox" id="pass_other_questions" name="pass_other_questions" :checked="this.test.pass_other_questions">
+            <input type="checkbox" id="pass_other_questions" name="pass_other_questions" :checked="test.pass_other_questions">
             <label for="pass_other_questions" class="label-style"></label>
           </div>
           
@@ -101,7 +101,7 @@
         </label>
         <div class="col-md-7 col-sm-6">
           <div class="checkbox-container">
-            <input type="checkbox" id="view_right_answers" name="view_right_answers" :checked="this.test.view_right_answers">
+            <input type="checkbox" id="view_right_answers" name="view_right_answers" :checked="test.view_right_answers">
             <label for="view_right_answers" class="label-style"></label>
           </div>
         </div>
@@ -113,17 +113,17 @@
         </label>
         <div class="col-md-7 col-sm-6">
           <div class="checkbox-container">
-            <input type="checkbox" id="published" name="published" :checked="this.test.published">
+            <input type="checkbox" id="published" name="published" :checked="test.published">
             <label for="published" class="label-style"></label>
           </div>
           
         </div>
       </div> -->
-      <input type="hidden" v-bind:value="this.idUser" name="id_user">
-      <input type="hidden" name="id" v-bind:value="this.test.id">
+      <input type="hidden" v-bind:value="idUser" name="id_user">
+      <input type="hidden" name="id" v-bind:value="test.id">
       
       <div class="text-center">
-        <button type="submit" class="btn btn-success">{{this.button}}</button>
+        <button type="submit" class="btn btn-success">{{button}}</button>
       </div>
       <div class="extra__buttons" v-show="test.id">
         <button   class="btn btn-sm btn-primary"
@@ -162,7 +162,9 @@ export default ({
       message: null,
       idAlgorithm: 1,
       test: {
-
+        name: '',
+        desc: '',
+        id_alg: null
       },
       idUser: this.$parent.$data.idUser,
       edited: false,
@@ -193,7 +195,7 @@ export default ({
       this.b=val>1000?0:val;
     },
     test(val){
-    }
+    },
   },
   methods: {
     getAlgorithms(){

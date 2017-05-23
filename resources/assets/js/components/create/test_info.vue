@@ -122,7 +122,7 @@
           @click.prevent="$parent.switchMainView('test-publish',
               { testId: test.id })">Перейти к публикации теста
         </button>
-        <button v-if="test.published" v-show="!array.wasCreated" class="btn btn-success" 
+        <button v-if="test.published&&!test.archive" v-show="!array.wasCreated" class="btn btn-success" 
           @click.prevent="$parent.switchMainView('test-publish',
               { testId: test.id })">Перейти к отмене публикации теста
         </button>

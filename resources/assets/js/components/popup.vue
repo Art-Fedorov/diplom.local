@@ -8,20 +8,15 @@
           <div class="modal-header">
             <slot name="header">
             </slot>
-          </div>
-          
-          
-            <slot name="body">
-              
-            </slot>
-          
-          
-            <slot name="footer">
-              <div class="modal-footer">
-                <button class="modal-btn" @click="$emit('close')">Ок</button>
-              </div>
-            </slot>
-          
+          </div>     
+          <slot name="body">
+            
+          </slot> 
+          <slot name="footer">
+            <div class="modal-footer">
+              <button class="btn btn-success modal-btn" @click="$emit('close')">OK</button>
+            </div>
+          </slot>
         </div> 
       </div>
       

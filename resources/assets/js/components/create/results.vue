@@ -13,7 +13,7 @@
 							</select>
 						</div>
 						<div class="archive__filter-item">
-							<label class="col-sm-3 form-group__label" for="">Поиск</label>
+							<label class="col-sm-3 form-group__label" for="">Поиск: </label>
 							<input class="col-sm-5 form-control" type="text" v-model="searchString">
 							<button class="col-sm-4 btn btn-primary" @click="onSearch(searchString)">Искать</button>
 						</div>

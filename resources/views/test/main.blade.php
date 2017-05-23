@@ -58,7 +58,7 @@
                 <div class="main-container">
                     {{-- @yield('contentTest') --}}
 
-                    <popup v-show="showPopup" @close.prevent="closePopup">
+                    <popup v-show="showPopup" @close="closePopup">
                         <h3 class="modal-header-text" v-if="popup.header" slot="header">@{{popup.header}}</h3>
                         <p v-if="popup.body" slot="body">@{{popup.body}}</p>
                     </popup>
@@ -66,7 +66,6 @@
                         <button class="btn btn-sm btn-primary switch-button-prev" v-show="previous.length" @click.prevent="switchPrevious()">Назад</button>
                         <button class="btn btn-sm btn-primary switch-button-next" v-show="futurious.length" @click.prevent="switchFuturious()">Вперед</button>
                     </div>
-
                     <transition name="fade" mode="out-in">
                         <component v-bind:is="current.mainView" :ref="current.mainView" :array="current.array" v-if="showed">
                         </component>

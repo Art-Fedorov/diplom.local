@@ -64,16 +64,5 @@ $(function(){
   $('.main').on('click','.js-main-content',function(event) {
     if (activeSidebar) $('.sidebar-button').click();
   });
-  function onResize(){
-    //console.log($('.main').find('sidebar'));
-    if ($(window).width()>991){
-      $('.sidebar-button').hide();
-    } else {
-      $('.sidebar-button').show();
-    }
-  }
-  onResize();
-  $(window).on('resize',function(){
-    onResize();
-  });
+
 });

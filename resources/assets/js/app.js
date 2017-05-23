@@ -83,8 +83,9 @@ var testInstance = new Vue({
         },ms);
       },
       closePopup(){
-        this.showPopup=false;
-        this.popup={
+        let self=this;
+        self.showPopup=false;
+        self.popup={
           header: null,
           body: null
         };

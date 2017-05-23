@@ -141,7 +141,7 @@
             Дата публикации <br> (формат ГГГГ-ММ-ДД ЧЧ:ММ:СС):
           </div>
           <div class="col-md-8 col-sm-8">
-            <input type="text" class="datepicker form-control" id="published_at" name="published_at" v-model="dateEnd">
+            <input type="text" class="datepicker form-control" id="ended_at" name="ended_at" v-model="dateEnd">
           </div>
         </div>
         <div class="form-group form-group--top">
@@ -233,7 +233,12 @@
                 } else{
                   let error= "В вопросе не добавлено ни одного варианта ответа";
                   this.addQuestionError(1,questions[key],error);
-                  
+                }
+              } 
+              else if (questions[key].word==1){
+                if (questions[key].answers.length==0){
+                  let error= "В вопросе не добавлено ни одного варианта ответа";
+                  this.addQuestionError(1,questions[key],error);
                 }
               }
             }
@@ -317,12 +322,18 @@
             return false;
           }
         }
+
         let date=this.dateStart;
         if (this.setDateStart==0){
           date=dateNow();
         }
         if (!checkDate(date)){
           alert('Неверная дата публикации');
+          return false;
+        }
+        if (this.dateEnd&&makeDateFromString(this.dateEnd)<makeDateFromString(this.dateStart))
+        {
+          alert('Дата окончания публикации раньше чем дата начала');
           return false;
         }
         let data={
@@ -376,9 +387,12 @@
       },
       initJquery(){
         this.$nextTick(function(){
-          $( ".datepicker" ).mask('0000-00-00 00:00:00',{
-            placeholder: "____-__-__ __:__:__"
-          });
+          // $( "#published_at" ).mask('0000-00-00 00:00:00',{
+          //   placeholder: "____-__-__ __:__:__"
+          // });
+          // $( "#ended_at" ).mask('0000-00-00 00:00:00',{
+          //   placeholder: "____-__-__ __:__:__"
+          // });
         });
       },
       getGroups(){
@@ -516,6 +530,12 @@
   function checkLeapYear(y){
     if (y%4==0&&y%100!=0||y%400==0) return true;
     return false;
+  }
+  function makeDateFromString(str){
+    let year=str.split(' ')[0].split('-');
+    let time=str.split(' ')[1].split(':');
+    let finalDateStart=new Date(year[0],year[1]-1,year[2],time[0],time[1],time[2]);    
+    return finalDateStart;
   }
   function dateNow(){
     let date=new Date();

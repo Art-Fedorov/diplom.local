@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="result__current-item">
-      <div class="result__current-item-question h4">
-        <span class="result__question-number">{{index(currentIndex)}}. </span>
+      <div class="result__current-item-question h4 mb20">
+        <span class="result__question-number">{{index(currentIndex)}}</span>
         <div class="ql-container" v-html="modTest.questions[currentIndex].question"></div>
       </div>
       <div class="result__answers">

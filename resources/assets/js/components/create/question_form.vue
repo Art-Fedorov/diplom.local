@@ -66,9 +66,9 @@
         
       </form>
     </div>
-    <div class="test-container-md" v-show="edited">
+    <div class="test-container-md mt30" v-show="edited">
       <div v-if="!question.word">
-        <h3 class="mb15">Варианты ответа</h3>
+        <h3 class="mb15 ">Варианты ответа</h3>
         <div class="answer">
         <div class="answer-item" v-for="(answer,index) in question.answers">
           <form :id="'answer-form'+index" :class="{'answer-form': test.id_alg!=2}" @submit.prevent="editAnswer(index)" >
@@ -102,7 +102,7 @@
         </div>
       </div>
       <div v-else>
-        <h3>Слово/число</h3>
+        <h3 class="mb15">Слово/число</h3>
         <form v-if="question.answers.length>0" id="answer-form0" @submit.prevent="editAnswer(0)">
           <div class="question__form-group">
             <input type="hidden" name="iscorrect" value="1">
