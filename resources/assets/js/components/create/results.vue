@@ -78,6 +78,7 @@
 		},
 		methods: {
 			modifyResults(){
+				this.modResults={};
 				for (let key in this.results){
 					this.results[key].active=true;
 					let idT=this.results[key].id_test;
@@ -103,6 +104,7 @@
 			onSearch(str){
 				let self=this;
 				self.b++;
+				self.modifyResults();
 				switch(parseInt(self.searchIndex)){
 					case 0: 
 						self.searchTest(str); 
