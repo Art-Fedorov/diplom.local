@@ -22,7 +22,7 @@
                   <button type="submit" class="btn  btn-success">
                     Ответить
                   </button>    
-                  <a class="btn-alternative" @click="incCurrentQuestionNumber">Пропустить</a>
+                  <a class="btn-alternative" v-if="tests.pass_other_questions" @click="incCurrentQuestionNumber">Пропустить</a>
                 </div>
                 <div v-else>
                   <div class="radio-container pass-answer-item" v-for="(answer,index) in currentQuestion.answers">
@@ -33,7 +33,7 @@
                   <button type="submit" class="btn  btn-success">
                     Ответить
                   </button>    
-                  <a class="btn-alternative" @click="incCurrentQuestionNumber">Пропустить</a>
+                  <a class="btn-alternative" v-if="tests.pass_other_questions" @click="incCurrentQuestionNumber">Пропустить</a>
                 </div>
               </div>
               <div v-else>
@@ -45,7 +45,7 @@
                 <button type="submit" class="btn  btn-success">
                   Ответить
                 </button>    
-                <a class="btn-alternative" @click="incCurrentQuestionNumber">Пропустить</a>
+                <a class="btn-alternative" v-if="tests.pass_other_questions" @click="incCurrentQuestionNumber">Пропустить</a>
               </div>          
             </form>
           </div>
