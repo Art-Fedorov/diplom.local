@@ -4,8 +4,8 @@
     <h2 class="pass__header text-left ">Тест "{{tests.name}}"</h2>
     <h3 class="pass__subheader text-left">Вопросы</h3>
     <div class="pass__questions">
-      <div class="form-group mb15"  v-for="(question,i) in questions" @click.prevent="selectQuestion(question)">
-        <div class="form-group__label question-text ql-container form-group--question" :class="{active: question.active}" >
+      <div class="form-group mb15 form-group--question" :class="{active: question.active}"  v-for="(question,i) in questions" @click.prevent="selectQuestion(question)">
+        <div class="form-group__label question-text ql-container" >
           <div v-html="question.question"></div>
         </div>
         <div class="question-answers-container">

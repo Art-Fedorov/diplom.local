@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="container-lg">
-                        <h2 class="text-center result__header">Результаты прохождения теста</h2>
+                        <h2 class="text-center result__header mb20">Результаты прохождения теста</h2>
                         @if ($test['id_alg']==1)
                             <div class="container-md">
                                 {{--@if ($result['right']==$result['all'])--}}
@@ -64,7 +64,7 @@
                                 {{--<p>--}}
                                     {{--Процент правильных ответов: <b>{{$res['percent']}}%</b>--}}
                                 {{--</p>--}}
-                                <h3>
+                                <h3 class="mb15">
                                     Вы прошли тест на <b>{{$res['percent']}}%</b>
                                 </h3>
                                 <h3>Ваша оценка: <b>{{$res['mark']}}</b> <small><b>(из {{$test['maxmark']}})</b></small></h3>
