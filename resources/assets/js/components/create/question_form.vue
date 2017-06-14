@@ -338,11 +338,11 @@
       setupQuestion: function(){
         let that=this;
         let data= getFormData($('#question-form'));
-        let x = that.$refs.editor.editor.innerHTML.replace(/<\/?[^>]+>/g,'').replace(/\s+/,"");
-        if (x.length<=5){
+        //let x = that.$refs.editor.editor.innerHTML.replace(/<\/?[^>]+>/g,'').replace(/\s+/,"");
+        /*if (x.length<=5){
           alert('Введите вопрос длинною более 5 символов!');
           return false;
-        }
+        }*/
 
         that.question.question=that.$refs.editor.editor.innerHTML;
         data.question=that.question.question;

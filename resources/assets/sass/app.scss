@@ -257,6 +257,7 @@ p{
 @media all and(max-width: 991px){
   .main{
     margin-top: 61px;
+    min-height: calc(100vh - 51px - 78px);
   }
 }
 
@@ -573,7 +574,9 @@ $navbar-bg:  #009688;
     min-height: 50px;
     &.active{
       background-color: #F0F4C3;
-
+      .question-answers-container{
+        background-color: #F9FBE7;
+      }
     }
   }
   &--top{
@@ -1543,7 +1546,8 @@ $navbar-bg:  #009688;
 footer{
   background-color: $navbar-bg;
   padding-top: 15px;
-  height: 51px;
+  padding-bottom: 15px;
+  min-height: 51px;
   *{
     color: white;
   }

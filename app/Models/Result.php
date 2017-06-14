@@ -38,7 +38,7 @@ class Result extends Model
     }
     public function getResultsByUser($id){
         return $this
-            ->where('id_user', $id)->with(['test,user'])->get();
+            ->where('id_user', $id)->with(['test','user'])->get();
     }
     public function getResultsByUserTest($idUser,$idTest){
         return $this

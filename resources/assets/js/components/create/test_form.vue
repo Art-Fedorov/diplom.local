@@ -164,6 +164,7 @@ export default ({
       test: {
         name: '',
         desc: '',
+        time: '00:30:00',
         id_alg: null
       },
       idUser: this.$parent.$data.idUser,
@@ -239,6 +240,11 @@ export default ({
     //update/create test
     setupTest: function(){
         let data= getFormData($('#test-form'));
+
+        if (!checkTheTime(data.time)){
+          alert('Неверный формат времени');
+          return false;
+        }
         if (this.edited){
           this.$http.put('/api/test/'+this.test.id, data).then(function(response) {
               this.test=response.data.data;
@@ -311,5 +317,10 @@ function getFormData($form){
     });
 
     return indexed_array;
+}
+function checkTheTime(str){
+  if (str=="00:00:00") return false;
+  console.log(str.match(/([01][0-9]||[2][0-3]):[0-5][0-9]:[0-5][0-9]/));
+  return str.match(/([01][0-9]||[2][0-3]):[0-5][0-9]:[0-5][0-9]/);
 }
 </script>

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="container-lg">
-                        <h2 class="text-center result__header mb20">Результаты прохождения теста</h2>
+                        <h2 class="result__header mb25">Результаты прохождения теста</h2>
                         @if ($test['id_alg']==1)
                             <div class="container-md">
                                 {{--@if ($result['right']==$result['all'])--}}
