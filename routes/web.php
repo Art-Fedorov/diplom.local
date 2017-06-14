@@ -70,8 +70,43 @@ Route::group(['middleware' => 'auth'], function () {
                 array_splice($results,$k,1);
             }
         }
-        //dump($results);
         return view('test.results',['results'=>$results]);
+    });
+
+    Route::get('/results/getsheet',function(){
+        if (redr('user')) return redirect('/');
+        Excel::create('Таблица результатов', function($excel) {
+
+            // Set the title
+            $excel->setTitle('Таблица результатов');
+
+            $excel->sheet('Результаты', function($sheet) {
+
+                $resultModel=new Result();
+                $results=$resultModel->getAllResults();
+                foreach ($results as $k=>$item){
+                    if ($item['test']['id_user']!=Auth::id()){
+                        array_splice($results,$k,1);
+                    }
+                }
+                $new=[];
+                foreach($results as $k=>$item){
+                    if ($item['passed']!=0) {
+                        $new[] = [
+                            'Идентификатор' => $item['id'],
+                            'Имя пользователя' => $item['user']['name'],
+                            'Название теста' => $item['test']['name'],
+                            'Кол-во баллов' => $item['mark']?$item['mark']:0,
+                            'Максимальное кол-во баллов' => $item['test']['maxmark'],
+                            'Процентное прохождение'=>$item['percent']?$item['percent']:0,
+                            'Дата окончания прохождения' => $item['updated_at']
+                        ];
+                    }
+                }
+                $sheet->fromArray($new);
+
+            });
+        })->download('xlsx');
     });
 
 //    Route::get('/results',function(){

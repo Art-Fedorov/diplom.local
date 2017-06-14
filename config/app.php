@@ -177,6 +177,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        'Maatwebsite\Excel\ExcelServiceProvider'
         //prod
         
     ],
@@ -230,7 +231,8 @@ return [
         
         
         'Form' => 'Collective\Html\FormFacade',   
-        'Html' => 'Collective\Html\HtmlFacade'
+        'Html' => 'Collective\Html\HtmlFacade',
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel'
     ],
 
 ];

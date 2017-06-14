@@ -22,6 +22,10 @@ class Result extends Model
     {
         //return $this->belongsTo('App\Models\Test','id_test');
     }
+    public function getOnlyResults(){
+        return $this->orderBy('id_test', 'desc')->orderBy('id_user', 'asc')
+            ->get()->toArray();
+    }
     public function getAllResults(){
         return $this->with(['test','user','user.groups'])->orderBy('id_test', 'desc')->orderBy('id_user', 'asc')
             ->get()->toArray();
@@ -34,7 +38,7 @@ class Result extends Model
     }
     public function getResultsByUser($id){
         return $this
-            ->where('id_user', $id)->with(['test'])->get();
+            ->where('id_user', $id)->with(['test,user'])->get();
     }
     public function getResultsByUserTest($idUser,$idTest){
         return $this

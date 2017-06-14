@@ -17,6 +17,10 @@
 							<input class="col-sm-5 form-control" type="text" v-model="searchString">
 							<button class="col-sm-4 btn btn-primary" @click="onSearch(searchString)">Искать</button>
 						</div>
+						<div class="archive__filter-item text-center">
+							<a href="/results/getsheet" class="col-xs-push-1 col-xs-10 col-sm-push-3 col-sm-6 btn btn-success" 
+							title="Данные о результатах в виде таблицы EXCEL">Скачать таблицу</a>
+						</div>
 					</div>
 				</div>
 			</div>
