@@ -8,6 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="container-lg">
+                        <div hidden>@{{showSidebar=false}}</div>
                         <h2 class="result__header mb25">Результаты прохождения теста</h2>
                         @if ($test['id_alg']==1)
                             <div class="container-md">

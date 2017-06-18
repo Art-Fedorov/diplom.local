@@ -96,7 +96,6 @@
             <input type="number" min="1" :max="maxQuestions" v-model="test.count_questions" class="form-control">
           </div>
         </div>
-
         <div v-if="test.id_alg==2" class="form-group form-group--checkbox">
           <div class="col-md-4 col-sm-4  form-group__label">
             Количество показываемых ответов в тесте
@@ -105,7 +104,6 @@
             <input type="number" min="1" :max="maxAnswers" v-model="test.count_answers" class="form-control">
           </div>
         </div>
-
         <div class="form-group form-group--checkbox">
           <div class="col-md-4 col-sm-4  form-group__label">
             Публикация
@@ -158,10 +156,8 @@
             <div class="publish__groups">
               <span class="publish__group" v-for="(group,index) in selectedGroups" @click="extractGroup(group,index)">{{group.group}}</span>
             </div>
-            
           </div>
         </div>
-
         <div class="">
           <button type="submit" class="btn btn-success btn-lg publish__button" :disabled="errorsCount>0" :title="errorsCount>0?'В тесте есть ошибки':null">
             Опубликовать

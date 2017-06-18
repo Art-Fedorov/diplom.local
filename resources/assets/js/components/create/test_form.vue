@@ -106,19 +106,6 @@
           </div>
         </div>
       </div>
-      
-      <!-- <div class="form-group form-group--checkbox">
-        <label for="published" class="col-md-5 col-sm-6  form-group__label">
-          Опубликовать?
-        </label>
-        <div class="col-md-7 col-sm-6">
-          <div class="checkbox-container">
-            <input type="checkbox" id="published" name="published" :checked="test.published">
-            <label for="published" class="label-style"></label>
-          </div>
-          
-        </div>
-      </div> -->
       <input type="hidden" v-bind:value="idUser" name="id_user">
       <input type="hidden" name="id" v-bind:value="test.id">
       

@@ -35,7 +35,7 @@
         <span class="answer-text__content">{{answer.answer}}</span> 
       </a>
     </div>
-    <div class="text-center"><button class="btn btn-success end-test" @click.prevent="getResults()">Завершить прохождение теста</button></div>
+    <div class="text-center"><button class="btn btn-success end-test" @click.prevent="getResults()">Закончить тест</button></div>
     <div class="hidden">{{b}}</div>
   </div>
 </template>
@@ -84,13 +84,11 @@
           self.b++;
           self.selectedQuestion=questionId;
         }
-        console.log(question,self.selectedQuestion);
       },
       //выбор вариантов ответа на вопрос
       selectAnswer(answer,index){
         if (this.selectedQuestion!=null){
           answer.index=index;
-
           if (answer.id!=0){
             //проверяем, выбирали ли ответ до этого
             let check=this.checkSelectedAnswer(answer.id);

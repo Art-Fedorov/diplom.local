@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+                <div hidden>@{{showSidebar=false}}</div>
                 <div class="main-container pass-question">
                     @if ($test['id_alg']==1)
                         <pass-id1

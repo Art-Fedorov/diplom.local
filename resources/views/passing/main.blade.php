@@ -14,7 +14,9 @@
             </div>
             <div class="col-lg-8 col-md-8 js-main-content">
                 <div class="main-container">
-                    <pass-select></pass-select>
+                    <component v-bind:is="currentMainView" :ref="currentMainView">
+                    </component>
+                    <!-- <pass-select></pass-select> -->
                 </div>
             </div>
         </div>

@@ -27,9 +27,9 @@ var testInstance = new Vue({
     el: '#app',
     data: {
       tests: {},
-      currentMainView: 'pass-test',
+      currentMainView: 'pass-select',
       showed: true,
-      showSidebar: false,
+      showSidebar: true,
       array: {},
       idUser: null,
       user: null,
@@ -70,6 +70,8 @@ var testInstance = new Vue({
     
     created: function(){
       this.getUserId();
+      if (this.currentMainView=='pass-select') this.showSidebar=true; 
+      else this.showSidebar=false;
 
     }
 });

@@ -703,6 +703,15 @@ $navbar-bg:  #009688;
   &__item-desc{
     padding-bottom: 10px;
   }
+  @media all and (max-width: $screen-xs-max){
+    &__item{
+      width: 100%;
+      margin-right: 0;
+      &:not(:nth-of-type(3n)){
+        margin-right: 0;
+      }
+    }
+  }
 }
 .btn-bottom{
   margin-bottom: 0;
@@ -823,6 +832,14 @@ $navbar-bg:  #009688;
   &:hover{
     text-decoration: none;
   }
+  @media all and (max-width: $screen-md-max){
+    width: calc(100% - 240px);
+  }
+  @media all and (max-width: $screen-sm-max){
+    margin-right: 0;
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 .question-answers-container{
   min-height: 42px;
@@ -845,6 +862,12 @@ $navbar-bg:  #009688;
     display: -ms-inline-flex;
     display: -o-inline-flex;
     display: inline-flex;
+  }
+  @media all and (max-width: $screen-md-max){
+    width: 230px;
+  }
+  @media all and (max-width: $screen-sm-max){
+    width: auto;
   }
 }
 .pass-answer-item{

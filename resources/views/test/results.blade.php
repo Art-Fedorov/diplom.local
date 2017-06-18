@@ -12,7 +12,7 @@
 @section('content')
 
     <div class="main">
-
+        
         <results res="{{json_encode($results)}}"></results>
 
     </div>

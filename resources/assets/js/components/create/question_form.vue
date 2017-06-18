@@ -11,15 +11,8 @@
       <h2 class="mb10 text-center">Тест "{{test.name}}"</h2>
       <h3 class="text-center">{{headerMessage}}</h3>
       <form @submit.prevent="setupQuestion()" id="question-form">  
-        <!-- <div class="form-group">
-          <div class="col-md-12 col-sm-12 text-left">
-            Вопрос:
-          </div>
-        </div> -->
         <div class="form-group">
           <div class="col-md-12 col-sm-12">
-            <!-- <textarea rows="3" class="form-control" type="text" autocomplete="false" name="question" 
-            v-model="question.question" required/> -->
             <vue-editor
               ref="editor"
               :editor-toolbar="customToolbar"
@@ -29,9 +22,6 @@
             </vue-editor>
           </div>
         </div>
-        <!-- <div class="preview ql-container" v-html="question.question">
-          
-        </div> -->
         <div class="form-group">
           <div class="col-md-3 col-sm-4 text-right form-group__label">
             Вес вопроса<br>(от 1 до 10)
@@ -40,8 +30,7 @@
             <input class="form-control" type="number" min="1" max="10" step="0.1" name="weight" 
             v-model="question.weight" required/>
           </div>
-        </div>
-        
+        </div>   
         <div class="form-group" v-if="test.id_alg==1">
           <div class="col-md-3 col-sm-4 text-right form-group__label">
             Вид вопроса
@@ -61,9 +50,7 @@
           {{button}}
           </button>
           <p class="text-success">{{ questionMessage }}</p>
-        </div>
-
-        
+        </div>     
       </form>
     </div>
     <div class="test-container-md mt30" v-show="edited">
@@ -113,7 +100,6 @@
             <button type="submit" class="btn btn-success">Сохранить</button>
           </div>       
         </form>
-
         <form v-else id="answer-form" @submit.prevent="createAnswer()">
           <div class="question__form-group">
             <input type="hidden" name="iscorrect" value="1">
@@ -123,9 +109,6 @@
             <input type="hidden" :value="question.id_test" name="id_test">
             <button type="submit" class="btn btn-success">Сохранить</button>
           </div>
-          
-          <!-- <span>{{ answerCreateMessage }}</span> -->
-          
         </form>
       </div>
     </div>  
@@ -137,9 +120,6 @@
       <div class="extra__button">
         <button @click.prevent="deleteQuestion" class="btn btn-sm btn-primary" >Удалить вопрос</button>
       </div>
-      <!-- <div class="extra__button">
-        <button @click.prevent="$parent.$refs.testSidebar.switchTestInfo(test)" class="btn btn-sm btn-primary">Просмотреть информацию о тесте</button>
-      </div> -->
     </div>
   </div>
 </template>
